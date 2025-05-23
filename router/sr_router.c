@@ -597,6 +597,7 @@ void sr_handlepacket(struct sr_instance* sr, struct sr_nat* nat,
 					/* Check this ICMP is echo or not */
 
 					/* Check this src ip and src aux_int has already in NAT or not */
+					/* TODO */
 				}
 
 
