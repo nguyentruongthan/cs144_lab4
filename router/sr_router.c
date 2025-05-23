@@ -512,7 +512,7 @@ void handle_arpreq(struct sr_instance* sr, struct sr_arpreq* arp_req) {
 }
 
 
-void handle_icmp_p
+
 
 /*---------------------------------------------------------------------
  * Method: sr_handlepacket(uint8_t* p,char* interface)
@@ -597,8 +597,6 @@ void sr_handlepacket(struct sr_instance* sr, struct sr_nat* nat,
 					/* Check this ICMP is echo or not */
 
 					/* Check this src ip and src aux_int has already in NAT or not */
-					struct sr_nat_mapping *int_mapping = 
-							sr_nat_lookup_internal(nat, ntohl(ip_hdr_recv->ip_src), uint16_t aux_int, sr_nat_mapping_type type );
 				}
 
 

@@ -144,7 +144,7 @@ int main(int argc, char **argv)
         Debug("Requesting topology %d\n", topo);
 
     /* connect to server and negotiate session */
-    if(sr_connect_to_server(&sr,port,server) == -1)
+    if(sr_connect_to_server(&sr, &nat, port,server) == -1)
     {
         return 1;
     }

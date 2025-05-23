@@ -75,7 +75,7 @@ static void sr_session_closed_help()
  *  something other than zero on error
  *
  *---------------------------------------------------------------------------*/
-int sr_connect_to_server(struct sr_instance* sr,unsigned short port,
+int sr_connect_to_server(struct sr_instance* sr, struct sr_nat* nat, unsigned short port,
                          char* server)
 {
     struct hostent *hp;
@@ -124,8 +124,8 @@ int sr_connect_to_server(struct sr_instance* sr,unsigned short port,
     }
 
     /* wait for authentication to be completed (server sends the first message) */
-    if(sr_read_from_server_expect(sr, VNS_AUTH_REQUEST)!= 1 ||
-       sr_read_from_server_expect(sr, VNS_AUTH_STATUS) != 1)
+    if(sr_read_from_server_expect(sr, nat, VNS_AUTH_REQUEST)!= 1 ||
+       sr_read_from_server_expect(sr, nat, VNS_AUTH_STATUS) != 1)
         return -1; /* failed to receive expected message */
 
     if(strlen(sr->template) > 0) {
@@ -158,7 +158,7 @@ int sr_connect_to_server(struct sr_instance* sr,unsigned short port,
     }
 
     if(strlen(sr->template) > 0)
-        if(sr_read_from_server_expect(sr, VNS_RTABLE) != 1)
+        if(sr_read_from_server_expect(sr, nat, VNS_RTABLE) != 1)
             return -1; /* needed to get the rtable */
 
     return 0;

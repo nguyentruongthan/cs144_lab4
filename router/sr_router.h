@@ -63,7 +63,7 @@ int sr_verify_routing_table(struct sr_instance* sr);
 
 /* -- sr_vns_comm.c -- */
 int sr_send_packet(struct sr_instance* , uint8_t* , unsigned int , const char*);
-int sr_connect_to_server(struct sr_instance* ,unsigned short , char* );
+int sr_connect_to_server(struct sr_instance* , struct sr_nat*, unsigned short , char* );
 int sr_read_from_server(struct sr_instance*, struct sr_nat*);
 
 /* -- sr_router.c -- */
